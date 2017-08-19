@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import App from './components/App';
+import Stack from './components/Stack';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={App}/>
+      <Route exact path="/stack" component={Stack}/>
+    </Switch>
+  </BrowserRouter>, document.getElementById('root'));
