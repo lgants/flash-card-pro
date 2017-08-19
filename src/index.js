@@ -7,19 +7,23 @@ import rootReducer from './reducers';
 import { setStack } from './actions';
 import App from './components/App';
 import Stack from './components/Stack';
+import Root from './components/Root';
+import './index.css';
 
 const store = createStore(rootReducer);
 store.subscribe(() => {
   console.log('store', store.getState());
 })
-store.dispatch(setStack({ id: 0, title: 'example', cards: [] }))
+store.dispatch(setStack({ id: 0, title: '', cards: [] }))
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={App}/>
-        <Route exact path="/stack" component={Stack}/>
-      </Switch>
+      <Root>
+        <Switch>
+          <Route exact path="/" component={App}/>
+          <Route path="/stack" component={Stack}/>
+        </Switch>
+      </Root>
     </BrowserRouter>
   </Provider>, document.getElementById('root'));

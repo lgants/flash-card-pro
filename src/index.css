@@ -1,0 +1,32 @@
+.card {
+  margin: 10px 0px;
+}
+
+.card-block {
+  display: inline-block;
+}
+
+.card-title {
+  margin: 0px;
+  float: left;
+}
+
+.card-text {
+  margin: 0px;
+  float: right
+}
+
+.text-shown {
+  animation-name: fade-in;
+  animation-duration: 1s;
+  visibility: visible;
+}
+
+.text-hidden {
+  visibility: hidden;
+}
+
+@keyframes fade-in {
+  from { opacity: 0 }
+  to { opacity: 100 }
+}
