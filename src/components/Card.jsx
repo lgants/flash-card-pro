@@ -19,15 +19,15 @@ class Card extends Component {
             () => this.setState({ reveal: true })
           }>
           <div className="card-block">
-            <h4 className="card-title">
+            <h5 className="card-title">
               {prompt}
-            </h4>
-            <h4 className="card-text">
+            </h5>
+            <h5 className="card-text">
               <span
                 className={this.state.reveal ? "text-shown" : "text-hidden"}>
                 {answer}
               </span>
-            </h4>
+            </h5>
           </div>
         </div>
       </div>

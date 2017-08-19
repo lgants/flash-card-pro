@@ -3,14 +3,20 @@ import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import stacks from '../data/stacks.json';
-import { setStack } from '../actions';
+import { setStack, loadStacks } from '../actions';
 
 class StackList extends Component {
+  componentDidMount() {
+    if (this.props.stacks.length == 0) {
+      this.props.loadStacks(stacks)
+    }
+  }
+
   render() {
     return (
       <div>
         {
-          stacks.map(stack => {
+          this.props.stacks.map(stack => {
             return (
               <Link
                 key={stack.id}
@@ -39,4 +45,13 @@ class StackList extends Component {
 // export default connect(null, mapDispatchToProps)(StackList);
 
 // NOTE 2nd refactor: used react-redux shortcut to directly pass in bound object action creators as 2nd parameter to connect function and bind them right away
-export default connect(null, { setStack })(StackList);
+// export default connect(null, { setStack })(StackList);
+
+// NOTE 3rd refactor: connected component to state
+function mapStateToProps(state) {
+  return {
+    stacks: state.stacks
+  }
+}
+
+export default connect(mapStateToProps, { setStack, loadStacks })(StackList);
