@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import stacks from '../data/stacks.json';
 import { setStack, loadStacks } from '../actions';
 
-class StackList extends Component {
+export class StackList extends Component {
   componentDidMount() {
     if (this.props.stacks.length == 0) {
       this.props.loadStacks(stacks)
@@ -16,10 +16,10 @@ class StackList extends Component {
     return (
       <div>
         {
-          this.props.stacks.map(stack => {
+          this.props.stacks.map((stack, index) => {
             return (
               <Link
-                key={stack.id}
+                key={index}
                 to="/stack"
                 onClick={() => this.props.setStack(stack)}>
                 <h4>{stack.title}</h4>
