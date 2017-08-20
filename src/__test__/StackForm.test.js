@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import { StackForm } from '../components/StackForm';
 import { stacks } from '../data/fixtures';
 
+const changeTitle = 'change title';
+const changePrompt = 'change prompt';
+const changeAnswer = 'change answer';
 
 describe('StackForm', () => {
   const stackForm = shallow(<StackForm />)
@@ -25,11 +28,11 @@ describe('StackForm', () => {
 
   describe('and updating a title', () => {
     beforeEach(() => {
-      stackForm.find('.form-control').simulate('change', { target: { value: 'change title' }});
+      stackForm.find('.form-control').simulate('change', { target: { value: changeTitle }});
     });
 
     it('updates the title in state', () => {
-      expect(stackForm.state().title).toEqual('change title');
+      expect(stackForm.state().title).toEqual(changeTitle);
     });
   });
 
@@ -37,6 +40,10 @@ describe('StackForm', () => {
     beforeEach(() => {
       stackForm.find('button').at(0).simulate('click');
     });
+
+    afterEach(() => {
+      stackForm.setState({ cards: [] });
+    })
 
     it('adds a new card to state', () => {
       expect(stackForm.state().cards.length).toEqual(1);
@@ -52,6 +59,24 @@ describe('StackForm', () => {
       expect(stackForm.find('label').at(2).text()).toEqual('Answer');
     });
 
-  });
+    describe('and updating the card prompt', () => {
+      beforeEach(() => {
+        stackForm.find('.form-control').at(1).simulate('change', { target: { value: changePrompt }});
+      });
 
-})
+      it('updates the prompt in the state', () => {
+        expect(stackForm.state().cards[0].prompt).toEqual(changePrompt);
+      });
+    });
+
+    describe('and updating the card answer', () => {
+      beforeEach(() => {
+        stackForm.find('.form-control').at(2).simulate('change', { target: { value: changeAnswer }});
+      });
+
+      it('updates the prompt in the state', () => {
+        expect(stackForm.state().cards[0].answer).toEqual(changeAnswer);
+      });
+    });
+  });
+});
