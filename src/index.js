@@ -15,7 +15,7 @@ const store = createStore(rootReducer);
 // store.subscribe(() => {
 //   console.log('store', store.getState());
 // })
-store.dispatch(setStack({ id: 0, title: '', cards: [] }))
+store.dispatch(setStack({ id: 0, title: '', cards: [] }));
 
 ReactDOM.render(
   <Provider store={store}>

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Stack } from '../components/Stack';
 import { stack } from '../data/fixtures';
 
-const props = stack
+const props = stack;
 
 describe('Stack', () => {
   const stack = shallow(<Stack {...props} />);
