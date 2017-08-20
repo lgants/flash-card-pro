@@ -8,22 +8,22 @@ const changePrompt = 'change prompt';
 const changeAnswer = 'change answer';
 
 describe('StackForm', () => {
-  const stackForm = shallow(<StackForm />)
+  const stackForm = shallow(<StackForm />);
 
   it('renders the form title', () => {
     expect(stackForm.find('h4').first().text()).toEqual('New Stack Form');
   });
 
   it('renders a form component', () => {
-    expect(stackForm.find('form').exists()).toBe(true)
+    expect(stackForm.find('form').exists()).toBe(true);
   });
 
   it('renders a button to add new card', () => {
-    expect(stackForm.find('button').at(0).text()).toEqual('Add Card')
+    expect(stackForm.find('button').at(0).text()).toEqual('Add Card');
   });
 
   it('renders a button to save card', () => {
-    expect(stackForm.find('button').at(1).text()).toEqual('Save Stack')
+    expect(stackForm.find('button').at(1).text()).toEqual('Save Stack');
   });
 
   describe('and updating a title', () => {
@@ -43,7 +43,7 @@ describe('StackForm', () => {
 
     afterEach(() => {
       stackForm.setState({ cards: [] });
-    })
+    });
 
     it('adds a new card to state', () => {
       expect(stackForm.state().cards.length).toEqual(1);
