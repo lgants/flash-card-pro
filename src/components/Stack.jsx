@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from './Card';
 
-class Stack extends Component {
+// NOTE added export here so the class can be imported in the test without the entire context of react/redux 
+export class Stack extends Component {
   render() {
     const { title, cards } = this.props.stack;
 
